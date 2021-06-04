@@ -20,7 +20,7 @@
         <li>Second, we need to allow container for accessing the graphics card: 
             <code>sudo xhost +</code>
         </li>
-        <li>Open terminal and run command: <code>docker run -it -v "$PWD":/root/CV-CG -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --device="/dev/video0:/dev/video0"</code></li>
+        <li>Open terminal and run command: <code>docker run -it -v "$PWD":/root/CV-CG -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --device="/dev/video0:/dev/video0" &#60image-name&#62;</code></li>
         <li>Now, your repository will mount into /root/CV-CG</li>
     </ul>
 
@@ -28,6 +28,7 @@
 <h3>3. Connect VScode to running docker container (Just for directly modifying the container)</h3>
     <ul>
         <li>Install extension: Remote container - ms-vscode-remote.remote-containers</li>
+        <li>Then we need to give user permission to docker group by: <code>sudo sudo usermod -aG docker ${USER}</code>. log out and log back in so that your group membership is re-evaluated or type the following command: <code>su -s ${USER}</code></li>
         <li>Press ctrl + shift + P: remote -> attach to running container</li>
         <li>Mount working directory in the left panel</li>
     </ul>
