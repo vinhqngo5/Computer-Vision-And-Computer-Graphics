@@ -36,7 +36,7 @@
 <h3>4. Start coding (Just use the docker container environment)</h3>
     <ul>
         <li>Open vscode in the repository folder and code, every changes will be saved</li>
-        <li>To compile C++ code, use this command: <code>g++ main.cpp -o main -I /usr/local/include -L /usr/local/lib -lopencv_core -lopencv_highgui</code></li>
+        <li>To compile C++ code, use this command: <code>g++ main.cpp -o main -I /usr/local/include/opencv4 -L /usr/local/lib -lopencv_core -lopencv_highgui</code></li>
         <li>There maybe some changes in running command, if use "opencv2/core" -> add -lopencv_core </li>
         <li>Then chmod and run code like normal</li>
         <li>Shoud do: create make file for convenience</li>

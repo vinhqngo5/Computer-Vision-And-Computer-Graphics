@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+		<script src="https://codechangers.com/physics.js"></script>
+	</head>
+	<body>
+		<a-scene id="myScene">
+			<a-entity environment="preset:forest;"></a-entity>
+			<a-plane
+				id="floor"
+				static-body
+				height="1000"
+				width="1000"
+				position="0 -0.02 0"
+				color="black"
+				rotation="-90 0 0"
+			></a-plane>
+			<a-camera id="myCamera" position="0 1 0">
+				<a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
+			</a-camera>
+			<a-icosahedron
+				staic-body
+				class="target"
+				color="white"
+				radius="1"
+				position="0 3 -5"
+			></a-icosahedron>
+		</a-scene>
+	</body>
+	<script src="https://codechangers.com/camps2019/vr/shoot-partial.js"></script>
+	<script>
+		nextLevel = "level2.html";
+	</script>
+	<script src="script.js"></script>
+</html>
