@@ -3,6 +3,8 @@ const GAME = {
 	DEFAULT_VELOCITY: 10,
 };
 
+let nextLevel = "index.html";
+
 const shoot = (velocity = GAME.DEFAULT_VELOCITY) => {
 	const bullet = document.createElement("a-sphere");
 	let pos = myCamera.getAttribute("position");
@@ -16,14 +18,23 @@ const shoot = (velocity = GAME.DEFAULT_VELOCITY) => {
 };
 
 const shootCollided = (event) => {
-	console.log("Hit something");
+	if (event.detail.body.el.id === "floor") {
+		event.detail.target.el.removeEventListener("collide", shootCollided);
+	} else if (event.detail.body.el.className === "target") {
+		console.log("Hit the target");
+		myScene.removeChild(event.detail.body.el);
+	}
+	if (document.querySelectorAll(".target").length === 0) {
+		console.log("You win");
+		location.href = nextLevel;
+	}
 };
 
 const shootInDesktop = (el, callback) => {
 	let touchsurface = el,
 		elapsedTime,
 		startTime,
-		handlePress = callback || function (swipedir) {};
+		handlePress = callback || function (swipeDir) {};
 
 	touchsurface.addEventListener(
 		"keydown",
@@ -41,7 +52,6 @@ const shootInDesktop = (el, callback) => {
 		"keyup",
 		function (e) {
 			elapsedTime = new Date().getTime() - startTime; // get time elapsed
-			console.log(new Date().getTime());
 			handlePress(e, Math.min(elapsedTime / 20, GAME.MAX_VELOCITY));
 			e.preventDefault();
 		},
@@ -49,9 +59,9 @@ const shootInDesktop = (el, callback) => {
 	);
 };
 
-function swipedetect(el, callback) {
+function swipeDetect(el, callback) {
 	var touchsurface = el,
-		swipedir,
+		swipeDir,
 		startX,
 		startY,
 		distX,
@@ -61,13 +71,13 @@ function swipedetect(el, callback) {
 		allowedTime = 300, // maximum time allowed to travel that distance
 		elapsedTime,
 		startTime,
-		handleswipe = callback || ((swipedir, velocity) => {});
+		handleswipe = callback || ((swipeDir, velocity) => {});
 
 	touchsurface.addEventListener(
 		"touchstart",
 		function (e) {
 			var touchobj = e.changedTouches[0];
-			swipedir = "none";
+			swipeDir = "none";
 			dist = 0;
 			startX = touchobj.pageX;
 			startY = touchobj.pageY;
@@ -96,16 +106,16 @@ function swipedetect(el, callback) {
 				// first condition for awipe met
 				if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
 					// 2nd condition for horizontal swipe met
-					swipedir = distX < 0 ? "left" : "right"; // if dist traveled is negative, it indicates left swipe
+					swipeDir = distX < 0 ? "left" : "right"; // if dist traveled is negative, it indicates left swipe
 				} else if (
 					Math.abs(distY) >= threshold &&
 					Math.abs(distX) <= restraint
 				) {
 					// 2nd condition for vertical swipe met
-					swipedir = distY < 0 ? "up" : "down"; // if dist traveled is negative, it indicates up swipe
+					swipeDir = distY < 0 ? "up" : "down"; // if dist traveled is negative, it indicates up swipe
 				}
 			}
-			handleswipe(swipedir, Math.min(Math.abs(distY / 8), GAME.MAX_VELOCITY));
+			handleswipe(swipeDir, Math.min(Math.abs(distY / 8), GAME.MAX_VELOCITY));
 			e.preventDefault();
 		},
 		false
@@ -115,6 +125,6 @@ function swipedetect(el, callback) {
 shootInDesktop(document, function (event, velocity) {
 	if (event.which == 32) shoot(velocity);
 });
-swipedetect(document, function (swipedir, velocity) {
-	if (swipedir == "up") shoot(velocity);
+swipeDetect(document, function (swipeDir, velocity) {
+	if (swipeDir == "up") shoot(velocity);
 });

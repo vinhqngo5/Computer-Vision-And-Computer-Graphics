@@ -21,17 +21,25 @@
 				<a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
 			</a-camera>
 			<a-icosahedron
-				staic-body
+				dynamic-body
 				class="target"
 				color="white"
 				radius="1"
 				position="0 3 -5"
 			></a-icosahedron>
+
+			<a-icosahedron
+				static-body
+				class="target"
+				color="white"
+				radius="1"
+				position="2 3 -5"
+			></a-icosahedron>
 		</a-scene>
 	</body>
 	<script src="https://codechangers.com/camps2019/vr/shoot-partial.js"></script>
-	<script>
-		nextLevel = "level2.html";
-	</script>
 	<script src="script.js"></script>
+	<script>
+		// nextLevel = "level2.html";
+	</script>
 </html>
