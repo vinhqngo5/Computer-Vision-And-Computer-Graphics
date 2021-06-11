@@ -4,42 +4,40 @@
 		<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 		<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 		<script src="https://unpkg.com/aframe-physics-system@4.0.1/dist/aframe-physics-system.js"></script>
-		<script src="proxy-event.js"></script>
+		<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	</head>
 	<body>
-		<a-scene id="myScene">
-			<a-entity environment="preset:forest;"></a-entity>
-			<a-plane
-				id="floor"
-				static-body
-				height="1000"
-				width="1000"
-				position="0 -0.02 0"
-				color="black"
-				rotation="-90 0 0"
-			></a-plane>
+		<a-scene id="myScene" arjs embedded>
+			<a-marker id="marker" preset="hiro">
+				<a-box
+					static-body
+					class="target"
+					color="red"
+					radius="1"
+					position="2 0 5"
+				></a-box>
+				<a-box
+					static-body
+					class="target"
+					color="blue"
+					radius="1"
+					position="2 0 4"
+				></a-box>
+				<a-box
+					static-body
+					class="target"
+					color="yellow"
+					radius="1"
+					position="1 0 4"
+				></a-box>
+			</a-marker>
 			<a-camera id="myCamera" position="0 1 0">
 				<a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
 			</a-camera>
-			<a-icosahedron
-				dynamic-body
-				class="target"
-				color="white"
-				radius="1"
-				position="0 3 -5"
-			></a-icosahedron>
-
-			<a-icosahedron
-				static-body
-				class="target"
-				color="white"
-				radius="1"
-				position="2 3 -5"
-			></a-icosahedron>
 		</a-scene>
 	</body>
-	<script src="script.js"></script>
 	<script src="getDirection.js"></script>
+	<script src="script.js"></script>
 	<script>
 		// nextLevel = "level2.html";
 	</script>
