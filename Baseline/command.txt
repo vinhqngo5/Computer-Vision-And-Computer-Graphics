@@ -1,0 +1,3 @@
+g++ main.cpp glad.c -o main -I /usr/local/include -L /usr/local/lib -lopencv_core -lopencv_highgui \
+    -lopencv_aruco -lopencv_imgproc -lopencv_calib3d -lopencv_features2d -lopencv_imgcodecs \
+    -lopencv_videoio -lopencv_xfeatures2d -ldl -lglfw -lGL -lassimp
