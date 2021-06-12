@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-physics-system@4.0.1/dist/aframe-physics-system.js"></script>
+		<script src="resizeModel.js"></script>
+	</head>
+	<body>
+		<a-scene id="myScene" physics="debug: true">
+			<a-assets>
+				<a-asset-item
+					id="pikachu"
+					src="Assets/pikachu/scene.gltf"
+				></a-asset-item>
+				<a-asset-item id="mew" src="Assets/mew/scene.gltf"></a-asset-item>
+				<a-asset-item id="ekans" src="Assets/ekans/scene.gltf"></a-asset-item>
+				<a-asset-item
+					id="poliwag"
+					src="Assets/poliwag/scene.gltf"
+				></a-asset-item>
+			</a-assets>
+			<a-entity environment="preset:forest;"></a-entity>
+			<a-plane
+				id="floor"
+				static-body
+				height="1000"
+				width="1000"
+				position="0 -0.02 0"
+				color="black"
+				rotation="-90 0 0"
+			></a-plane>
+			<a-camera id="myCamera" position="0 1 0">
+				<a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
+			</a-camera>
+			<a-icosahedron
+				static-body
+				class="target"
+				color="white"
+				radius="1"
+				position="0 3 -5"
+			></a-icosahedron>
+			<a-entity
+				class="target"
+				static-body
+				gltf-model="#pikachu"
+				position="0 1 -5"
+				scale="5 5 5"
+			></a-entity>
+			<a-entity
+				class="target"
+				static-body
+				gltf-model="#mew"
+				position="-1 0.9 -5"
+				scale="0.03 0.03 0.03"
+			></a-entity>
+			<a-entity
+				class="target"
+				static-body
+				gltf-model="#ekans"
+				position="1 0 -5"
+				scale="0.02 0.02 0.02"
+			></a-entity>
+			<a-entity
+				class="target"
+				static-body
+				gltf-model="#poliwag"
+				position="1 0 -2.5"
+				scale="0.08 0.08 0.08"
+			></a-entity>
+
+			<!-- natural-size="width:5" -->
+		</a-scene>
+	</body>
+	<script src="getDirection.js"></script>
+	<script src="script.js"></script>
+	<script>
+		nextLevel = "index-physics.html";
+	</script>
+</html>
