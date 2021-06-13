@@ -14,4 +14,4 @@ LIBS    += -lopencv_videoio -lopencv_xfeatures2d -ldl -lglfw -lGL -lassimp
 run: install
 	./main
 install: SOURCES GLAD_SOURCE
-	@$(CPP) $(INCLUDE) -o main
+	@$(CPP) $(INCLUDE) $(LIBS) SOURCES GLAD_SOURCE -o main
