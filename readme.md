@@ -4,7 +4,25 @@
 <h2>Table of content:</h2>
     <ol>
         <li><a href="#heading1">Docker image for Environment</a></li>
-        <li><a href="#heading2">Sourcecode for the project</a></li>
+        <li>
+            <a href="#heading2">Sourcecode for the project</a>
+            <ol>
+                <li>Baseline sourcecode</li>
+                <li>Implemented sourcecode
+                    <ul>
+                        <li>Demo
+                            <ul>
+                                <li>3D prototype game</li>
+                                <li>3D prototype game with physics</li>
+                                <li>Pokemon Go game</li>
+                                <li>Pokemon Go game with physics</li>
+                            </ul>
+                        </li>
+                        <li>How to play</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
     </ol>
 
 <h2 id="heading1">Docker image for Environment</h2>
@@ -24,7 +42,6 @@
         <li>Now, your repository will mount into /root/CV-CG</li>
     </ul>
 
-
 <h3>3. Connect VScode to running docker container (Just for directly modifying the container)</h3>
     <ul>
         <li>Install extension: Remote container - ms-vscode-remote.remote-containers</li>
@@ -43,4 +60,5 @@
     </ul>
 
 <h2 id="heading2">Sourcecode for the project</h2>
-<div>Write later</div>
+<h3>1. Baseline sourcecode</h3>
+<h3>2. Implemented sourcecode</h3>
