@@ -8,17 +8,18 @@
             <a href="#heading2">Sourcecode for the project</a>
             <ol>
                 <li>Baseline sourcecode</li>
-                <li>Implemented sourcecode
+                <li><a href="#imple-src">Implemented sourcecode</a>
                     <ul>
-                        <li>Demo
+                        <li><a href="#abt-this">About this game</a></li>
+                        <li><a href="#demo-game">Demo</a>
                             <ul>
-                                <li>3D prototype game</li>
-                                <li>3D prototype game with physics</li>
-                                <li>Pokemon Go game</li>
-                                <li>Pokemon Go game with physics</li>
+                                <li><a href="WebSrc/index.html">3D prototype game</a></li>
+                                <li><a href="WebSrc/index-physics.html">3D prototype game with physics</a></li>
+                                <li><a href="WebSrc/AR.html">Pokemon Go game</a></li>
+                                <li><a href="WebSrc/AR-physics.html">Pokemon Go game with physics</a></li>
                             </ul>
                         </li>
-                        <li>How to play</li>
+                        <li><a href="#how-to-play">How to play</a></li>
                     </ul>
                 </li>
             </ol>
@@ -61,4 +62,22 @@
 
 <h2 id="heading2">Sourcecode for the project</h2>
 <h3>1. Baseline sourcecode</h3>
-<h3>2. Implemented sourcecode</h3>
+<h3 id="imple-src">2. Implemented sourcecode</h3>
+<h4 id="abt-this">⦾ About this game</h4>
+This is a simple game which targets to provide a similar Pokemon Go like shooting experiences, where a "shooter" shoots "bullets" that can hit "targets" (Pokemon balls hit Pokemons).  A large chunk of the game can be handled at just the declarative A-Frame layer in HTML, which is compatible with multi-platform and easy to deploy.
+<h4 id="demo-game">⦾ Demo</h4>
+<ul>
+    <li><a href="WebSrc/index.html">3D prototype game</a></li>
+    <li><a href="WebSrc/index-physics.html">3D prototype game with physics</a></li>
+    <li><a href="WebSrc/AR.html">Pokemon Go game</a></li>
+    <li><a href="WebSrc/AR-physics.html">Pokemon Go game with physics</a></li>
+</ul>
+<h4 id="how-to-play">⦾ How to play</h4>
+<img align="center" src="ReadmeAssets/1.png">
+<ul>
+    <li>Use keyboard keys <kbd>A</kbd> <kbd>W</kbd> <kbd>S</kbd> <kbd>D</kbd> and <kbd>mouse</kbd> for moving around and chaging view in PC.</li>
+    <li>Use gestures <kbd>=></kbd>(swipe right) and <kbd><=</kbd>(swipe left) for changing view in Mobile.</li>
+    <li>Pressing <kbd>space</kbd> for shooting in PC. Velocity of the bullets are based on how long you press the button.</li>
+    <li>Use gesture <kbd>swipe up</kbd> for shooting in Mobile. Velocity of the bullets are based on how fast you swipe.</li>
+</ul>
+<img align="center" src="ReadmeAssets/2.png">
