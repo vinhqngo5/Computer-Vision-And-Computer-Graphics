@@ -12,7 +12,7 @@ const shoot = (velocity = GAME.DEFAULT_VELOCITY) => {
 	bullet.setAttribute("velocity", getDirection(myCamera, velocity));
 	bullet.setAttribute("dynamic-body", true);
 	bullet.setAttribute("radius", 0.2);
-	bullet.setAttribute("src", "https://i.imgur.com/H8e3Vnu.png");
+	bullet.setAttribute("src", "https://i.imgur.com/cBUjdOb.png");
 	myScene.appendChild(bullet);
 	bullet.addEventListener("collide", shootCollided);
 };
