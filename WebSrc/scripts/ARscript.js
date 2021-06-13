@@ -1,5 +1,5 @@
 const GAME = {
-	MAX_VELOCITY: 20,
+	MAX_VELOCITY: 35,
 	DEFAULT_VELOCITY: 10,
 };
 
