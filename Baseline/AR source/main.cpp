@@ -57,96 +57,8 @@ bool is_mark = false;
 int minHessian = 400;
 std::vector<KeyPoint> keypoints_object, keypoints_scene;
 Mat descriptors_object, descriptors_scene;
-Mat img_object = imread("mark.jpg", IMREAD_GRAYSCALE);
 Ptr<cv::xfeatures2d::SURF> detector = cv::xfeatures2d::SURF::create(minHessian);
 
-void initKnownDescriptors()
-{
-	detector->detectAndCompute(img_object, noArray(), keypoints_object, descriptors_object);
-}
-
-void findAndComputePose(cv::Mat &img_scene)
-{
-	std::vector<KeyPoint> keypoints_scene;
-	Mat descriptors_scene;
-	detector->detectAndCompute(img_scene, noArray(), keypoints_scene, descriptors_scene);
-
-	if (keypoints_scene.size() <= 0)
-		return;
-	Ptr<DescriptorMatcher> matcher = DescriptorMatcher::create(DescriptorMatcher::FLANNBASED);
-	std::vector< std::vector<DMatch> > knn_matches;
-	
-	matcher->knnMatch(descriptors_object, descriptors_scene, knn_matches, 2);
-
-	const float ratio_thresh = 0.75f;
-	std::vector<DMatch> good_matches;
-	for (size_t i = 0; i < knn_matches.size(); i++)
-	{
-		if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance)
-		{
-			good_matches.push_back(knn_matches[i][0]);
-		}
-	}
-	if (good_matches.size() > 8)
-	{
-		std::vector<Point2f> obj;
-		std::vector<Point2f> scene;
-
-		for (size_t i = 0; i < good_matches.size(); i++)
-		{
-			obj.push_back(keypoints_object[good_matches[i].queryIdx].pt);
-			scene.push_back(keypoints_scene[good_matches[i].trainIdx].pt);
-		}
-
-		Mat H = findHomography(obj, scene, RANSAC);
-
-		std::vector<Point2f> obj_corners(4);
-		obj_corners[0] = Point2f(0, 0);
-		obj_corners[1] = Point2f((float)img_object.cols, 0);
-		obj_corners[2] = Point2f((float)img_object.cols, (float)img_object.rows);
-		obj_corners[3] = Point2f(0, (float)img_object.rows);
-
-		std::vector<Point2f> scene_corners(4);
-		perspectiveTransform(obj_corners, scene_corners, H);
-
-		std::vector<Point3f> obj_corners_3d(4);
-		for (size_t i = 0; i < 4; i++)
-			obj_corners_3d[i] = Point3f(obj_corners[i].x/640.f-0.5, -obj_corners[i].y/640.f+0.5, 0);
-		cv::Vec3d rvec, tvec;
-		cv::solvePnP(obj_corners_3d, scene_corners, camera_matrix, dist_coeffs, rvec, tvec);
-
-		cv::Mat viewMatrixf = cv::Mat::zeros(4, 4, CV_32F);
-		cv::Mat rot;
-
-		Rodrigues(rvec, rot);
-		for (unsigned int row = 0; row < 3; ++row)
-		{
-			for (unsigned int col = 0; col < 3; ++col)
-			{
-				viewMatrixf.at<float>(row, col) = (float)rot.at<double>(row, col);
-			}
-			viewMatrixf.at<float>(row, 3) = (float)tvec[row];
-		}
-		viewMatrixf.at<float>(3, 3) = 1.0f;
-
-		cv::Mat cvToGl = cv::Mat::zeros(4, 4, CV_32F);
-		cvToGl.at<float>(0, 0) = 1.0f;
-		cvToGl.at<float>(1, 1) = -1.0f; // Invert the y axis 
-		cvToGl.at<float>(2, 2) = -1.0f; // invert the z axis 
-		cvToGl.at<float>(3, 3) = 1.0f;
-		viewMatrixf = cvToGl * viewMatrixf;
-		cv::transpose(viewMatrixf, viewMatrixf);
-
-		viewMatrix = viewMatrixf;
-
-		is_mark = true;
-	}
-	else
-	{
-		is_mark = false;
-	}
-
-}
 
 void readCameraPara()
 {
@@ -266,6 +178,17 @@ void buildProjectionMatrix(float nearp, float farp) {
 	float c_x = camera_matrix.at<double>(0, 2);
 	float c_y = camera_matrix.at<double>(1, 2);
 
+	// projMatrix.at<float>(0, 0) = 2 * f_x / (float)SCR_WIDTH;
+	// projMatrix.at<float>(1, 1) = 2 * f_y / (float)SCR_HEIGHT;
+
+	// projMatrix.at<float>(2, 0) = 1.0f - 2 * c_x / (float)SCR_WIDTH;
+	// projMatrix.at<float>(2, 1) = 2 * c_y / (float)SCR_HEIGHT - 1.0f;
+	// projMatrix.at<float>(2, 2) = -(farp + nearp) / (farp - nearp);
+	// projMatrix.at<float>(2, 3) = -1.0f;
+
+	// projMatrix.at<float>(3, 2) = -2.0f*farp*nearp / (farp - nearp);
+
+
 	projMatrix.at<float>(0, 0) = 2 * f_x / (float)SCR_WIDTH;
 	projMatrix.at<float>(1, 1) = 2 * f_y / (float)SCR_HEIGHT;
 
@@ -301,7 +224,6 @@ void setCamera(cv::Mat viewMatrix) {
 int main()
 {
 	readCameraPara();
-	initKnownDescriptors();
 
 	// glfw: initialize and configure
 	// ------------------------------
@@ -374,7 +296,7 @@ int main()
 	Shader ourShader("shader.vs", "shader.fs");
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
-	float cube_w = 0.25f;
+	float cube_w = 0.5f;
 	float vertices[] = {
 		-cube_w, -cube_w, 0, 0.0f, 0.0f,
 		cube_w, -cube_w, 0, 1.0f, 0.0f,
