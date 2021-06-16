@@ -22,6 +22,7 @@ const shootCollided = (event) => {
 		event.detail.target.el.removeEventListener("collide", shootCollided);
 	} else if (event.detail.body.el.className === "target") {
 		console.log("Hit the target");
+		event.detail.target.el.removeEventListener("collide", shootCollided);
 		marker.removeChild(event.detail.body.el);
 	} else if (event.detail.body.el.className === "text") {
 		let textWrapper = document.querySelector("#text-wrapper");

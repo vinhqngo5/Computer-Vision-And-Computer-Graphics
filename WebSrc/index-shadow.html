@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-physics-system@4.0.1/dist/aframe-physics-system.js"></script>
+		<script src="scripts/resizeModel.js"></script>
+	</head>
+	<body>
+		<a-scene id="myScene">
+			<a-assets>
+				<a-asset-item
+					id="pikachu"
+					src="Assets/pikachu/scene.gltf"
+				></a-asset-item>
+				<a-asset-item id="mew" src="Assets/mew/scene.gltf"></a-asset-item>
+				<a-asset-item id="ekans" src="Assets/ekans/scene.gltf"></a-asset-item>
+				<a-asset-item
+					id="poliwag"
+					src="Assets/poliwag/scene.gltf"
+				></a-asset-item>
+			</a-assets>
+			<a-entity environment="preset:forest; shadow:true"></a-entity>
+			<!-- <a-entity
+				light="type:directional; castShadow:true; intensity: 0.2"
+				position="5 15 1"
+			></a-entity> -->
+			<!-- <a-entity light="type: ambient; color: #CCC; intensity :0.5"></a-entity> -->
+			<a-plane
+				id="floor"
+				static-body
+				height="1000"
+				width="1000"
+				position="0 -0.02 0"
+				rotation="-90 0 0"
+			></a-plane>
+			<a-camera id="myCamera" position="2 1 1">
+				<a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
+			</a-camera>
+
+			<a-icosahedron
+				shadow
+				static-body
+				class="target"
+				color="white"
+				radius="1"
+				position="2 3 -5"
+			></a-icosahedron>
+			<a-entity
+				shadow
+				class="target"
+				static-body
+				gltf-model="#pikachu"
+				position="0 0.8 -1"
+				scale="5 5 5"
+			></a-entity>
+			<a-entity
+				shadow
+				class="target"
+				static-body
+				gltf-model="#mew"
+				position="1 0.9 -5"
+				scale="0.03 0.03 0.03"
+			></a-entity>
+			<a-entity
+				shadow
+				class="target"
+				static-body
+				gltf-model="#ekans"
+				position="3 0 -5"
+				scale="0.02 0.02 0.02"
+			></a-entity>
+			<a-entity
+				shadow
+				class="target"
+				static-body
+				gltf-model="#poliwag"
+				position="3 0 -2.5"
+				scale="0.08 0.08 0.08"
+			></a-entity>
+		</a-scene>
+	</body>
+	<script src="scripts/getDirection.js"></script>
+	<script src="scripts/script.js"></script>
+	<script>
+		nextLevel = "index-shadow.html";
+	</script>
+</html>
