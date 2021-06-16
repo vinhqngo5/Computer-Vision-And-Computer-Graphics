@@ -20,6 +20,7 @@
                             </ul>
                         </li>
                         <li><a href="#how-to-play">How to play</a></li>
+                        <li><a href="#demo-mobile">Demo on Mobile</a></li>
                     </ul>
                 </li>
             </ol>
@@ -91,5 +92,5 @@ This is a simple game which targets to provide a similar Pokemon Go like shootin
     <li>Use gesture <kbd>swipe up</kbd> for shooting in Mobile. Velocity of the bullets are based on how fast you swipe.</li>
 </ul>
 <img align="center" src="ReadmeAssets/2.png">
-
-![caption](https://r3---sn-ogul7ne6.c.drive.google.com/videoplayback?expire=1623853638&ei=BtLJYJSYDaDurvIP74OH6A0&ip=2405:4802:a070:14e0:8461:f1e4:1372:d705&cp=QVRHVUlfUlZRSVhPOmd1UkhUN0RPSE9pcktPamY1VzNkaXJ0YmNQTDFPWEhrQzF5dDZRZ3dob1o&id=f056b12c5eb6d135&itag=22&source=webdrive&requiressl=yes&mh=Gb&mm=32&mn=sn-ogul7ne6&ms=su&mv=m&mvi=3&pl=44&ttl=transient&susc=dr&driveid=1GL7d7zKqzjh2a0FttrBQkUvx6OR1tekH&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=15.023&lmt=1623575813587418&mt=1623838593&sparams=expire,ei,ip,cp,id,itag,source,requiressl,ttl,susc,driveid,app,mime,vprv,prv,dur,lmt&sig=AOq0QJ8wRAIgTfP4DbK5LXstwFlYVdBRbkYGRq5Lptb6NokSEAfknYQCIFff1OY8qaXR_iBgkS2eF5wSK59Nb021gKxO3kebTCMe&lsparams=mh,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhANcTpQaZPyfIKT-QJwVIatTrQhurZ4cw9x_Xk9msGNAbAiA0-sT_QLmuU6a-B54AQubA3GP1apL6Z-AA2-QVIQY25Q==&cpn=rlN0xUFyGagCutz9&c=WEB_EMBEDDED_PLAYER&cver=1.20210614.1.0)
+<h4 id="demo-mobile">⦾ Demo on mobile</h4>
+<img align="center" src="https://i.imgur.com/lhM8xBM.gif" height=800>
