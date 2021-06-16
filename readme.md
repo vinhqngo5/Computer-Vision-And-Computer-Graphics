@@ -7,7 +7,7 @@
         <li>
             <a href="#heading2">Sourcecode for the project</a>
             <ol>
-                <li>Baseline sourcecode</li>
+                <li><a href="#base-src">Baseline sourcecode</li>
                 <li><a href="#imple-src">Implemented sourcecode</a>
                     <ul>
                         <li><a href="#abt-this">About this game</a></li>
@@ -61,7 +61,17 @@
     </ul>
 
 <h2 id="heading2">Sourcecode for the project</h2>
-<h3>1. Baseline sourcecode</h3>
+<h3 id="base-src">1. Baseline sourcecode</h3>
+<h4> Camera calibration</h4>
+<ul>
+	<li> Use camera to take some photo of chessboard image in <a href="Baseline/CameraParameter/chessboard.png">this</a>  and put them into <code>Baseline/ChessBoardSet</code>  
+	<li> Run camera calibration, in <code>Baseline</code> folder, use this command: <code> python CameraCalibratioin.py </code>
+	<li> Copy camera information from <code>CameraParameter/data1.txt</code> to <code>/AR source/camera.yml</code>
+</ul>
+<h4> Compile code and run </h4>
+<ul>
+</ul>
+
 <h3 id="imple-src">2. Implemented sourcecode</h3>
 <h4 id="abt-this">⦾ About this game</h4>
 This is a simple game which targets to provide a similar Pokemon Go like shooting experiences, where a "shooter" shoots "bullets" that can hit "targets" (Pokemon balls hit Pokemons).  A large chunk of the game can be handled at just the declarative A-Frame layer in HTML, which is compatible with multi-platform and easy to deploy.
