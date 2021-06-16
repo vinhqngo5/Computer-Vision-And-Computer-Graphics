@@ -9,6 +9,7 @@ const shoot = (velocity = GAME.DEFAULT_VELOCITY) => {
 	const bullet = document.createElement("a-sphere");
 	let pos = myCamera.getAttribute("position");
 	bullet.setAttribute("position", pos);
+	bullet.setAttribute("shadow", "true");
 	bullet.setAttribute("velocity", getDirection(myCamera, velocity));
 	bullet.setAttribute("dynamic-body", true);
 	bullet.setAttribute("radius", 0.2);
@@ -22,6 +23,7 @@ const shootCollided = (event) => {
 		event.detail.target.el.removeEventListener("collide", shootCollided);
 	} else if (event.detail.body.el.className === "target") {
 		console.log("Hit the target");
+		event.detail.target.el.removeEventListener("collide", shootCollided);
 		myScene.removeChild(event.detail.body.el);
 	}
 	if (document.querySelectorAll(".target").length === 0) {

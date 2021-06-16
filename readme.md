@@ -13,13 +13,14 @@
                         <li><a href="#abt-this">About this game</a></li>
                         <li><a href="#demo-game">Demo</a>
                             <ul>
-                                <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/index.html">3D prototype game</a></li>
+                                <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/index-shadow.html">3D prototype game</a></li>
                                 <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/index-physics.html">3D prototype game with physics</a></li>
                                 <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/AR.html">Pokemon Go game</a></li>
                                 <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/AR-physics.html">Pokemon Go game with physics</a></li>
                             </ul>
                         </li>
                         <li><a href="#how-to-play">How to play</a></li>
+                        <li><a href="#demo-mobile">Demo on Mobile</a></li>
                     </ul>
                 </li>
             </ol>
@@ -77,7 +78,7 @@
 This is a simple game which targets to provide a similar Pokemon Go like shooting experiences, where a "shooter" shoots "bullets" that can hit "targets" (Pokemon balls hit Pokemons).  A large chunk of the game can be handled at just the declarative A-Frame layer in HTML, which is compatible with multi-platform and easy to deploy.
 <h4 id="demo-game">⦾ Demo</h4>
 <ul>
-    <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/index.html">3D prototype game</a></li>
+    <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/index-shadow.html">3D prototype game</a></li>
     <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/index-physics.html">3D prototype game with physics</a></li>
     <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/AR.html">Pokemon Go game</a></li>
     <li><a href="https://vinhqngo5.github.io/Computer-Vision-And-Computer-Graphics/WebSrc/AR-physics.html">Pokemon Go game with physics</a></li>
@@ -91,3 +92,5 @@ This is a simple game which targets to provide a similar Pokemon Go like shootin
     <li>Use gesture <kbd>swipe up</kbd> for shooting in Mobile. Velocity of the bullets are based on how fast you swipe.</li>
 </ul>
 <img align="center" src="ReadmeAssets/2.png">
+<h4 id="demo-mobile">⦾ Demo on mobile</h4>
+<img align="center" src="https://i.imgur.com/lhM8xBM.gif" height=800>
